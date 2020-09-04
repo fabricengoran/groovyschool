@@ -9,6 +9,12 @@ class BootStrap {
         if(Environment.current == Environment.DEVELOPMENT) { 
             createDevUsers()
         }
+
+        User contact = new User(fullName:'gr8di admin', email:'admin@gr8di.com', subject:'This is a subject', message:'This is a message')
+                if (!contact.save()){
+                    log.error "Could not send request!"
+                    log.error "${contact.errors}"
+                }
     }
 
     def createDevUsers() { 
